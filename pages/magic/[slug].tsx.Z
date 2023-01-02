@@ -1,0 +1,49 @@
+// import { useRouter } from "next/router";
+// import { Flex, Text, Heading } from "@chakra-ui/react";
+
+// import { toolRoutes, toolComponents } from "../../routes/tools";
+// import Layout from "../../components/Layout/Layout";
+
+// /**
+//  * TODO: CURRENTLY BREAKS HOT RELOAD
+//  *
+//  */
+
+// export async function getStaticPaths() {
+//   const paths = toolRoutes.map((t) => {
+//     return {
+//       params: {
+//         slug: t.slug,
+//       },
+//     };
+//   });
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps(context: any) {
+//   let tool = toolRoutes.find((route) => route.slug === context.params.slug);
+//   return {
+//     props: {
+//       tool,
+//     },
+//   };
+// }
+
+// const Tool = ({ tool }: any) => {
+//   const router = useRouter();
+//   const { slug } = router.query;
+
+//   let t = toolComponents.find((tc) => tc.slug === slug);
+//   return (
+//     <Layout>
+//       <Heading size='xl'>{tool.name}</Heading>
+//       <Heading size='sm'>{slug}</Heading>
+//       {t && t.component()}
+//     </Layout>
+//   );
+// };
+
+// export default Tool;
