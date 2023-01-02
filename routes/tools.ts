@@ -20,6 +20,12 @@ export const toolRoutes: Array<ToolRoute> = [
     description:
       "Generate shades for a color, ready-to-use for CSS, Tailwind, and more",
   },
+  {
+    name: "Code Formatter",
+    slug: "code-formatter",
+    description:
+      "Format a code snippet into a readable form in JS, TS, HTML, and more",
+  },
 ];
 
 export const toolComponents = [

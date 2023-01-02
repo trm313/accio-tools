@@ -3,6 +3,7 @@ import { Flex, Text, Heading, Icon } from "@chakra-ui/react";
 
 import { HiColorSwatch } from "react-icons/hi";
 import { IoIosColorPalette } from "react-icons/io";
+import { BsJournalCode } from "react-icons/bs";
 
 import { ToolRoute, toolRoutes } from "../../routes/tools";
 
@@ -14,6 +15,10 @@ const NAVICONS: any = {
   "color-shades-generator": {
     icon: HiColorSwatch,
     color: "#63af8e",
+  },
+  "code-formatter": {
+    icon: BsJournalCode,
+    color: "#c27bb9",
   },
 };
 

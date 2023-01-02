@@ -2,20 +2,20 @@ import { Divider, Flex, Heading } from "@chakra-ui/react";
 
 import Layout from "../../components/Layout/Layout";
 import Markdown from "../../components/Markdown";
-import ColorConverter from "../../components/Tools/ColorConverter/ColorConverter";
+import CodeFormatter from "../../components/Tools/CodeFormatter/CodeFormatter";
 import ToolsList from "../../components/Layout/ToolsList";
 
-import { colorConverterMarkdown } from "../../markdown/colorConverter";
+import { md } from "../../markdown/codeFormatter";
 
 const ColorConverterPage = () => {
   return (
     <Layout
-      title='Color Converter'
-      description='Convert a color from Hex, RGB, RGBA, HSL, HSV, or name to any other format'
+      title='Code Formatter'
+      description='Copy a code snippet to prettify it into a nice format for reading or re-copying'
     >
-      <ColorConverter />
+      <CodeFormatter />
       <Divider my={8} />
-      <Markdown content={colorConverterMarkdown} />
+      <Markdown content={md} />
 
       <ToolsList />
     </Layout>
