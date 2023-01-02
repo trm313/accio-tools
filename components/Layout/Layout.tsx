@@ -13,7 +13,7 @@ interface LayoutProps {
 
 export default function Layout({ children, title, description }: any) {
   return (
-    <Flex direction='column' minH='100vh' w='full'>
+    <Flex direction='column' minH='100vh' maxW='100vw' overflowX='hidden'>
       <Head>
         <title>{title ? `${title} | Accio Tools` : "Accio Tools"}</title>
         <meta name='description' content={description} />

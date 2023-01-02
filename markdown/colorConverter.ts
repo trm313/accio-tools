@@ -13,7 +13,7 @@ Once selected, we'll show you all of the various forms of that color below, incl
 
 **RGBA** - It is the same schema as RGB, but allows for a fourth parameter, opacity, with a value between 0-1. Example: \`rgba(20, 150, 22, .1)\`
 
-**Hex** - Hex colors follow the same color model as RGB, simply translating the RGBA values to a hexadecimal. Hex value go from 0-9, and then continue from A-F. We can see this more clearly by looking at each major step: 00=0, 99=153, AA=170, FF=255. Hex values are most commonly seen in the form \`RRGGBB\`, but can also have the *alpha* (opacity) parameter appended to the end as in \`RRGGBBAA\`. So, for example, a nice steel blue would be \`#7F98CC\`, and if you wanted to set a 50% opacity on it, it would be \`#7f98cc80\`. 
+**Hex** - Hex colors follow the same color model as RGB, simply translating the RGBA values to a hexadecimal. Hex value go from 0-9, and then continue from A-F. We can see this more clearly by looking at each major step: 00->0, 99->153, AA->170, FF->255. Hex values are most commonly seen in the form \`RRGGBB\`, but can also have the *alpha* (opacity) parameter appended to the end as in \`RRGGBBAA\`. So, for example, a nice steel blue would be \`#7F98CC\`, and if you wanted to set a 50% opacity on it, it would be \`#7f98cc80\`. 
 
 **HSV** - A cylindrical color model with paramters for hue, saturation, and value. Example: \`hsv(210, 4%, 97%)\`
 

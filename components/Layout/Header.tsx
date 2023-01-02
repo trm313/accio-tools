@@ -18,7 +18,9 @@ export default function Header() {
             >
               <Image src='/img/Logo.png' alt='Accio Tools Logo' fill />
             </Box>
-            <Heading size='lg'>Accio Tools</Heading>
+            <Heading size='lg'>
+              <i>Accio</i> Tools
+            </Heading>
           </Flex>
         </Link>
         {/* <Flex alignItems='center'>

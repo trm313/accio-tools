@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Flex, Text, Heading, Icon } from "@chakra-ui/react";
 
-import { FaHatWizard } from "react-icons/fa";
 import { HiColorSwatch } from "react-icons/hi";
 import { IoIosColorPalette } from "react-icons/io";
 

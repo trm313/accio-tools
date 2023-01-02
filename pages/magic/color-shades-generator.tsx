@@ -3,7 +3,7 @@ import { Divider, Heading } from "@chakra-ui/react";
 import Layout from "../../components/Layout/Layout";
 import Markdown from "../../components/Markdown";
 import ColorShades from "../../components/Tools/ColorShades/ColorShades";
-import ToolLinks from "../../components/Layout/ToolLinks";
+import ToolsList from "../../components/Layout/ToolsList";
 
 import { colorShadesMarkdown } from "../../markdown/colorShades";
 
@@ -16,11 +16,8 @@ const ColorShadesGenerator = () => {
       <ColorShades />
       <Divider my={8} />
       <Markdown content={colorShadesMarkdown} />
-      <Divider my={8} />
-      <Heading size='lg' fontWeight='semibold'>
-        More Magic Tools
-      </Heading>
-      <ToolLinks />
+
+      <ToolsList />
     </Layout>
   );
 };
