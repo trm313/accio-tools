@@ -12,7 +12,7 @@ interface ColorEntryProps {
 }
 
 const ColorEntry = ({ onChange, value }: ColorEntryProps) => {
-  const [input, setInput] = useState("#e86146");
+  const [input, setInput] = useState("#7e79ce");
   const [color, setColor] = useState(tinycolor(input));
 
   const handleChangeInput = (str: string) => {

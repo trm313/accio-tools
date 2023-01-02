@@ -11,7 +11,7 @@ const ColorShadesGenerator = () => {
   return (
     <Layout
       title='Color Shades Generator'
-      description='Input a color and return color shades in a 50 - 900 format, ready-to-use for CSS files, TailwindCSS, and other styling formats'
+      description='Input a color and return color shades in a 50 - 900 format, ready-to-use in CSS files, TailwindCSS, Chakra UI, and as a plaintext list'
     >
       <ColorShades />
       <Divider my={8} />

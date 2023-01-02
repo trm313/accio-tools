@@ -98,6 +98,40 @@ module.exports = {
   return str;
 };
 
+const formatAsChakra = (shades: string[], colorName: string) => {
+  let name = "colorname";
+  if (colorName) {
+    name = colorName.replace(" ", "").toLowerCase().trim();
+  }
+
+  let str = `// Chakra Theme Config
+import { extendTheme } from "@chakra-ui/react";
+const theme = extendTheme({
+  colors: {
+    ${name}: {
+      50: '${shades[0]}',
+      100: '${shades[1]}',
+      200: '${shades[2]}',
+      300: '${shades[3]}',
+      400: '${shades[4]}',
+      500: '${shades[5]}',
+      600: '${shades[6]}',
+      700: '${shades[7]}',
+      800: '${shades[8]}',
+      900: '${shades[9]}',
+    },
+  },
+})
+
+// Pass the new theme to \`ChakraProvider\`
+<ChakraProvider theme={theme}>
+  <App />
+</ChakraProvider>
+`;
+
+  return str;
+};
+
 interface FormatOption {
   name: string;
   formatCodeString: Function;
@@ -105,19 +139,24 @@ interface FormatOption {
 }
 const FORMATS: FormatOption[] = [
   {
-    name: "Text List",
-    formatCodeString: formatAsText,
-    language: "plaintext",
+    name: "TailwindCSS",
+    formatCodeString: formatAsTailwind,
+    language: "javascript",
   },
   {
-    name: "CSS",
+    name: "Chakra UI",
+    formatCodeString: formatAsChakra,
+    language: "javascript",
+  },
+  {
+    name: "CSS Variables",
     formatCodeString: formatAsCSS,
     language: "css",
   },
   {
-    name: "Tailwind",
-    formatCodeString: formatAsTailwind,
-    language: "javascript",
+    name: "Text List",
+    formatCodeString: formatAsText,
+    language: "plaintext",
   },
 ];
 
