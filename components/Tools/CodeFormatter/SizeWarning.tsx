@@ -1,14 +1,4 @@
-import {
-  Text,
-  Flex,
-  Code,
-  Textarea,
-  Button,
-  Select,
-  Alert,
-  AlertIcon,
-  Icon,
-} from "@chakra-ui/react";
+import { Text, Flex, Alert, AlertIcon, Icon } from "@chakra-ui/react";
 
 const SizeWarning = ({ length }: any) => {
   let sizeKB = length / 1000;

@@ -39,7 +39,7 @@ const CodeFormatter = () => {
 
   const [format, setFormat] = useState(LANGUAGE_OPTIONS[0]);
 
-  const SIZE_WARNING_THRESHOLD = 10000; // In characters (1 char = 1 byte for most Unicode characters)
+  const SIZE_WARNING_THRESHOLD = 10000; // In characters (1 char = 1 byte for most Unicode characters, up to 4)
 
   const formatCode = () => {
     setIsFormatting(true);

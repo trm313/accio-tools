@@ -1,14 +1,4 @@
-import {
-  Text,
-  Flex,
-  Code,
-  Textarea,
-  Button,
-  Select,
-  Alert,
-  AlertIcon,
-  Icon,
-} from "@chakra-ui/react";
+import { Text, Flex, Alert, AlertIcon, Icon } from "@chakra-ui/react";
 
 const ErrorAlert = () => {
   return (
@@ -26,11 +16,12 @@ const ErrorAlert = () => {
       </Flex>
       <Flex direction='column'>
         <Text fontWeight='semibold' my={2}>
-          Prettier failed to format the input, here is their feedback
+          Check selected language and review syntax
         </Text>
         <Text>
-          Syntax error? Oof. Prettier can only format syntactically correct
-          code. If possible, resolve the syntax issues and keep trying.
+          Double check the parse language currently selected or try to follow
+          the feedback from Prettier below to resolve any syntax errors in the
+          code. Prettier can only format syntactically correct code.
         </Text>
       </Flex>
     </Alert>

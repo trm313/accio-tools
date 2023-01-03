@@ -15,7 +15,8 @@ export default function Cover() {
           Magic micro tools to help you create magic
         </Heading>
         <Heading size='md' fontWeight='normal'>
-          Micro tools on the web, for creators, designers, and developers
+          Free web-based micro tools for creators, designers, and developers to
+          create amazing projects with
         </Heading>
       </Flex>
       <Flex w={["sm", "md"]}>
