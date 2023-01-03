@@ -11,7 +11,7 @@ const ColorConverterPage = () => {
   return (
     <Layout
       title='Code Formatter'
-      description='Copy a code snippet to prettify it into a nice format for reading or re-copying'
+      description='Format a code snippet with Prettier into a pretty form in JS, TS, HTML, and more'
     >
       <CodeFormatter />
       <Divider my={8} />

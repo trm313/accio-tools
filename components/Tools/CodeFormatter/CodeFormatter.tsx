@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import prettier from "prettier/standalone";
 import parserBabel from "prettier/parser-babel";
@@ -17,57 +17,32 @@ import {
   Select,
   Alert,
   AlertIcon,
+  Icon,
+  Box,
 } from "@chakra-ui/react";
+import { TfiEraser } from "react-icons/tfi";
+import { IoCodeWorkingSharp } from "react-icons/io5";
+import { TbCodePlus } from "react-icons/tb";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-const LANGUAGE_OPTIONS = [
-  {
-    name: "Javascript",
-    language: "javascript",
-    parser: "babel",
-  },
-  {
-    name: "Typescript",
-    language: "typescript",
-    parser: "typescript",
-  },
-  {
-    name: "HTML",
-    language: "htmlbars",
-    parser: "html",
-  },
-  // {
-  //   name: "SQL",
-  //   language: "sql",
-  //   parser: null,
-  // },
-  // {
-  //   name: "Markdown",
-  //   language: "markdown",
-  //   parser: "markdown",
-  // },
-  {
-    name: "GraphQL",
-    language: "javascript",
-    parser: "graphql",
-  },
-  {
-    name: "Text",
-    language: "plaintext",
-    parser: "markdown",
-  },
-];
+import ErrorAlert from "./ErrorAlert";
+import SizeWarning from "./SizeWarning";
+import { LANGUAGE_OPTIONS } from "./languageOptions";
 
 const CodeFormatter = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState(null);
+  const [showSizeWarning, setShowSizeWarning] = useState(false);
 
   const [format, setFormat] = useState(LANGUAGE_OPTIONS[0]);
 
+  const SIZE_WARNING_THRESHOLD = 10000; // In characters (2xLength = size in Bytes)
+
   const formatCode = () => {
     setError(null);
+
     try {
       let code = String(input);
       const formattedCode = prettier.format(code, {
@@ -93,6 +68,18 @@ const CodeFormatter = () => {
     }
   };
 
+  console.log("Input Length: ", input.length);
+
+  useEffect(() => {
+    if (input.length >= SIZE_WARNING_THRESHOLD && !showSizeWarning) {
+      setShowSizeWarning(true);
+      return;
+    }
+    if (input.length < SIZE_WARNING_THRESHOLD && showSizeWarning) {
+      setShowSizeWarning(false);
+    }
+  }, [input, showSizeWarning]);
+
   return (
     <>
       <Select
@@ -115,25 +102,85 @@ const CodeFormatter = () => {
       </Select>
       <Textarea value={input} onChange={(e) => setInput(e.target.value)} />
 
-      <Button onClick={() => formatCode()} colorScheme='purple' mb={8}>
-        Format
-      </Button>
+      <Flex flexGrow={1} mt={2}>
+        <Button
+          flexGrow={1}
+          onClick={() => formatCode()}
+          size='lg'
+          leftIcon={<Icon boxSize={6} as={TbCodePlus} />}
+          colorScheme='purple'
+          mb={8}
+          mr={8}
+        >
+          Format
+        </Button>
+        <Button
+          onClick={() => setInput("")}
+          size='lg'
+          colorScheme='gray'
+          leftIcon={<Icon as={TfiEraser} />}
+        >
+          Clear Input
+        </Button>
+      </Flex>
+
+      {showSizeWarning && (
+        <Flex w='full' maxW='lg' justifySelf='center' mx='auto'>
+          <SizeWarning length={input.length} />
+        </Flex>
+      )}
 
       {error && (
         <>
-          <Alert status='error'>
-            <AlertIcon />
-            Code failed to format, see Prettier error below
-          </Alert>
+          <Flex mb={2}>
+            <ErrorAlert />
+          </Flex>
+          <Flex
+            bg='gray.200'
+            justifyContent='flex-end'
+            shadow='lg'
+            rounded='lg'
+          >
+            <Button
+              onClick={() => {
+                setOutput("");
+                setError(null);
+              }}
+              leftIcon={<Icon as={TfiEraser} />}
+              colorScheme='teal'
+              size='sm'
+              m={2}
+            >
+              Clear Output
+            </Button>
+          </Flex>
           <SyntaxHighlighter language={"plaintext"} style={docco}>
             {error}
           </SyntaxHighlighter>
         </>
       )}
       {output && !error && (
-        <SyntaxHighlighter language={"javascript"} style={docco}>
-          {output}
-        </SyntaxHighlighter>
+        <>
+          <Flex
+            bg='gray.200'
+            justifyContent='flex-end'
+            shadow='lg'
+            rounded='lg'
+          >
+            <Button
+              onClick={() => setOutput("")}
+              leftIcon={<Icon as={TfiEraser} />}
+              colorScheme='teal'
+              size='sm'
+              m={2}
+            >
+              Clear Output
+            </Button>
+          </Flex>
+          <SyntaxHighlighter language={"javascript"} style={docco}>
+            {output}
+          </SyntaxHighlighter>
+        </>
       )}
     </>
   );
