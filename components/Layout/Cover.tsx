@@ -12,7 +12,7 @@ export default function Cover() {
     >
       <Flex direction='column' w='full' maxW='lg'>
         <Heading size='2xl' fontWeight={"semibold"} mb={6}>
-          Magic micro tools to help you create
+          Magic micro tools to help you create magic
         </Heading>
         <Heading size='md' fontWeight='normal'>
           Micro tools on the web, for creators, designers, and developers

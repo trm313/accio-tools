@@ -35,30 +35,37 @@ const CodeFormatter = () => {
   const [output, setOutput] = useState("");
   const [error, setError] = useState(null);
   const [showSizeWarning, setShowSizeWarning] = useState(false);
+  const [isFormatting, setIsFormatting] = useState(false);
 
   const [format, setFormat] = useState(LANGUAGE_OPTIONS[0]);
 
-  const SIZE_WARNING_THRESHOLD = 10000; // In characters (2xLength = size in Bytes)
+  const SIZE_WARNING_THRESHOLD = 10000; // In characters (1 char = 1 byte for most Unicode characters)
 
   const formatCode = () => {
+    setIsFormatting(true);
     setError(null);
 
-    try {
-      let code = String(input);
-      const formattedCode = prettier.format(code, {
-        parser: format.parser || "babel",
-        plugins: [
-          parserBabel,
-          parserGraphql,
-          parserHtml,
-          parserMarkdown,
-          parserTypescript,
-        ],
-      });
-      setOutput(formattedCode);
-    } catch (e: any) {
-      setError(e.message);
-    }
+    setTimeout(() => {
+      // Hacky, but fixes the loading state not triggering in time, and gives it that "we're doing something important feel" (and avoids flashing state)
+      try {
+        let code = String(input);
+        const formattedCode = prettier.format(code, {
+          parser: format.parser || "babel",
+          plugins: [
+            parserBabel,
+            parserGraphql,
+            parserHtml,
+            parserMarkdown,
+            parserTypescript,
+          ],
+        });
+        setOutput(formattedCode);
+        setIsFormatting(false);
+      } catch (e: any) {
+        setError(e.message);
+        setIsFormatting(false);
+      }
+    }, 350);
   };
 
   const handleChangeFormat = (name: string) => {
@@ -67,8 +74,6 @@ const CodeFormatter = () => {
       setFormat(f);
     }
   };
-
-  console.log("Input Length: ", input.length);
 
   useEffect(() => {
     if (input.length >= SIZE_WARNING_THRESHOLD && !showSizeWarning) {
@@ -111,6 +116,8 @@ const CodeFormatter = () => {
           colorScheme='purple'
           mb={8}
           mr={8}
+          isLoading={isFormatting}
+          loadingText='Formatting'
         >
           Format
         </Button>

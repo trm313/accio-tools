@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 const SizeWarning = ({ length }: any) => {
-  let sizeKB = (2 * length) / 1000;
+  let sizeKB = length / 1000;
   let sizeMB = sizeKB / 1000;
 
   let sizeString = `${sizeKB} KB`;
