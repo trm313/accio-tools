@@ -1,17 +1,15 @@
-   <!-- public/sitemap.xml -->
-   <xml version="1.0" encoding="UTF-8">
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <url>
-       <loc>https://www.accio.tools/magic/code-formatter</loc>
-       <lastmod>2023-01-05</lastmod>
-     </url>
-     <url>
-       <loc>https://www.accio.tools/magic/color-converter</loc>
-       <lastmod>2023-01-05</lastmod>
-     </url>
-     <url>
-       <loc>https://www.accio.tools/magic/color-shades-generator</loc>
-       <lastmod>2023-01-05</lastmod>
-     </url>
-   </urlset>
-   </xml>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.accio.tools/magic/code-formatter</loc>
+    <lastmod>2023-01-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.accio.tools/magic/color-converter</loc>
+    <lastmod>2023-01-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.accio.tools/magic/color-shades-generator</loc>
+    <lastmod>2023-01-05</lastmod>
+  </url>
+</urlset>
